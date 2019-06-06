@@ -9,18 +9,11 @@ class ApplicationController < Sinatra::Base
     set :views, 'app/views'
   end
 
-  # get "/" do
-  #   erb :welcome
-  # end
-
-  get '/' do
-    if logged_in?
-        redirect '/discs'
-    else
-        erb :index
-    end
+  get "/" do
+    erb :index
   end
 
+  
   helpers do
       def current_user
           @current_user ||= User.find_by(:id => session[:user_id]) if session[:user_id]
@@ -31,10 +24,5 @@ class ApplicationController < Sinatra::Base
       end
   end
 
-  def login_confirmation
-    if !logged_in?
-      redirect "/login"
-    end 
-  end 
-
+  
 end

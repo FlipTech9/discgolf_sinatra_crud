@@ -9,8 +9,8 @@ class UsersController < ApplicationController
     end 
 
     post '/signup' do 
-        if params["username"] != "" && params["password"] != ""
-            @user.User.create(params)
+        if params["name"] != "" && params["password"] != ""
+            @user = User.create(params)
             @user.save 
             session[:user_id] = @user.id 
             redirect '/discs'
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
     end 
 
     post '/login' do 
-        @user = User.find_by(username: params[:username])
+        @user = User.find_by(name: params[:name])
         session[:user_id] = @user.id 
         redirect '/discs'
     end 

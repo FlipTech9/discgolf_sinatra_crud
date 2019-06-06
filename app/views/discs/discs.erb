@@ -1,0 +1,15 @@
+<h1> Hello, <%= @user.name %> </h1>
+
+<% @discs.each do |disc| %>
+    <h2> <%=disc.name.to_s %></h2>
+    <h2> <%=disc.color.to_s %></h2>
+    <h2> <%=disc.weight.to_s %></h2>
+<% end %> 
+
+<form method="GET" action="/discs/new">
+    <input type="submit" value="Create Disc">
+</form>
+
+<form method="GET" action="/logout">
+    <input type="submit" value="Log Out">
+</form>

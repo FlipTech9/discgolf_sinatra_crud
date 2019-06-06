@@ -1,0 +1,13 @@
+<h3> Edit Disc </h3>
+
+<%= @disc.name %>
+
+<form method="POST" action="/discs/<%= @disc.id %>/edit">
+
+    Name:<input type="text" name="name" placeholder="<%= @disc.name %>"></br>
+    Color:<input type="text" name="color" placeholder="<%= @disc.color %>"></br>
+    Weight:<input type="text" name="weight" placeholder="<%= @disc.weight %>"></br>
+    
+    <input type="submit" id="submit" value="Update Discs">
+
+</form>

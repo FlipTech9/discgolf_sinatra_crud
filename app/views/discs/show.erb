@@ -1,0 +1,12 @@
+<h2> <%= @disc.name %> </h2>
+<h2> <%= @disc.color %> </h2>
+<h2> <%= @disc.weight %> </h2>
+
+<form method="GET" action="/discs/<%= @disc.id %>/delete">
+    <input type ="submit" value="Delete Disc">
+</form> 
+
+<form method="GET" action="/discs/<%= @disc.id %>/edit">
+    <input type ="submit" value="Edit Disc">
+
+</form>
