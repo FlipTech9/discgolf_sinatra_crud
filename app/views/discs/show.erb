@@ -1,12 +1,19 @@
 <h2> <%= @disc.name %> </h2>
-<h2> <%= @disc.color %> </h2>
-<h2> <%= @disc.weight %> </h2>
+<h3> <%= @disc.color %> </h3>
+<h4> <%= @disc.weight %> </h4>
+
+<% if current_user.discs.include?(@disc) %>
+    
+    <form method="GET" action="/discs/<%= @disc.id %>/edit">
+        <input type ="submit" value="Edit Disc">
+    </form> 
+<% end %>
 
 <form method="GET" action="/discs/<%= @disc.id %>/delete">
     <input type ="submit" value="Delete Disc">
 </form> 
 
-<form method="GET" action="/discs/<%= @disc.id %>/edit">
-    <input type ="submit" value="Edit Disc">
+<div>
+    <a href="/discs">Disc Index</a>
+</div>
 
-</form>

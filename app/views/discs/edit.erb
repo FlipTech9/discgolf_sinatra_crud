@@ -3,7 +3,7 @@
 <%= @disc.name %>
 
 <form method="POST" action="/discs/<%= @disc.id %>/edit">
-
+    <input id="hidden" type="hidden" name="_method" value="PATCH" />
     Name:<input type="text" name="name" placeholder="<%= @disc.name %>"></br>
     Color:<input type="text" name="color" placeholder="<%= @disc.color %>"></br>
     Weight:<input type="text" name="weight" placeholder="<%= @disc.weight %>"></br>

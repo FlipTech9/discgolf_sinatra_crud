@@ -2,8 +2,14 @@
 
 <% @discs.each do |disc| %>
     <h2> <%=disc.name.to_s %></h2>
-    <h2> <%=disc.color.to_s %></h2>
-    <h2> <%=disc.weight.to_s %></h2>
+    <h3> <%=disc.color.to_s %></h3>
+    <h4> <%=disc.weight.to_s %></h4>
+    <% if current_user.discs.include?(disc) %>
+    
+        <form method="GET" action="/discs/<%= disc.id %>/edit">
+            <input type ="submit" value="Edit Disc">
+        </form> 
+        <% end %>
 <% end %> 
 
 <form method="GET" action="/discs/new">

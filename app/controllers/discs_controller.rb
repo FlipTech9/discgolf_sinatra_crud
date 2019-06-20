@@ -34,10 +34,11 @@ class DiscsController < ApplicationController
     get "/users/:slug" do 
         erb :'users/show'
     end 
-    
-    get "discs/:id" do 
+
+    get "/discs/:id" do 
         if logged_in?
-            @disc = Disc.find_by(params[:id])
+            #binding.pry 
+            @disc = Disc.find(params[:id])
             erb :'/discs/show'
         else 
             redirect '/login'
@@ -46,7 +47,7 @@ class DiscsController < ApplicationController
 
     get "/discs/:id/edit" do 
         if logged_in?
-            @disc = Disc.find_by(params[:id])
+            @disc = Disc.find_by_id(params["id"])
             if @disc.user_id == session[:user_id]
                 erb :'discs/edit'
             else
@@ -57,10 +58,10 @@ class DiscsController < ApplicationController
         end 
     end 
 
-    post "/discs/:id/edit" do 
+    patch "/discs/:id/edit" do 
         if logged_in?
             if params[:name] != "" && params[:color] != "" && params[:weight] != ""
-                @disc = Disc.find_by(params[:id])
+                @disc = Disc.find_by_id(params["id"])
                 @disc.name = params[:name]
                 @disc.color = params[:color]
                 @disc.weight = params[:weight]
@@ -76,7 +77,7 @@ class DiscsController < ApplicationController
 
     get "/discs/:id/delete" do 
         if logged_in?
-            @disc = Disc.find_by(params[:id])
+            @disc = Disc.find_by_id(params["id"])
             if @disc.user_id == session[:user_id]
                 @disc.delete 
             end 
