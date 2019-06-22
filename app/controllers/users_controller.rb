@@ -31,8 +31,13 @@ class UsersController < ApplicationController
 
     post '/login' do 
         @user = User.find_by(name: params[:name])
-        session[:user_id] = @user.id 
-        redirect '/discs'
+        if @user.authenticate(params[:password])
+            session[:user_id] = @user.id 
+            redirect '/discs'
+        else
+            
+            redirect '/signup? error=Please enter correct password'
+        end 
     end 
 
     get '/logout' do 

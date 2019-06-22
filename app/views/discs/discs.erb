@@ -1,7 +1,8 @@
 <h1> Hello, <%= @user.name %> </h1>
 
 <% @discs.each do |disc| %>
-    <h2> <%=disc.name.to_s %></h2>
+    <h2>  <a href="/discs/<%=disc.id %>"><%= disc.name.to_s %></a></h2>
+
     <h3> <%=disc.color.to_s %></h3>
     <h4> <%=disc.weight.to_s %></h4>
     <% if current_user.discs.include?(disc) %>
